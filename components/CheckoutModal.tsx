@@ -37,7 +37,7 @@ export default function CheckoutModal({ isOpen, onClose, product, selectedFlavor
       `*Endereço:* ${address}%0A` +
       `*Pagamento:* ${paymentMethod}`;
 
-    const whatsappUrl = `https://wa.me/556984831401?text=${message}`;
+    const whatsappUrl = `https://wa.me/556992057239?text=${message}`;
     window.open(whatsappUrl, '_blank');
     onClose();
   };

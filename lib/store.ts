@@ -81,7 +81,7 @@ const DEFAULT_PRODUCTS: Product[] = [
 
 const DEFAULT_SETTINGS: SiteSettings = {
   name: 'MKPODS',
-  logo: 'https://picsum.photos/seed/mkpods/200/200',
+  logo: 'https://instagram.fjpr3-1.fna.fbcdn.net/v/t51.2885-19/508650357_17929546152062329_6358848498553286227_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDc4LmMyIn0&_nc_ht=instagram.fjpr3-1.fna.fbcdn.net&_nc_cat=101&_nc_oc=Q6cZ2QHWDxrtIKYdDMySIMiTAbUZRqkWaVC-6V4h5rm2EWVv1JdhJOosRLokNs6pXPO4F9Xqd9cYcdNQy-MJHoLYCXON&_nc_ohc=k6dDsMNURikQ7kNvwGvgmKK&_nc_gid=hYeHFqwnolBMU6h9ZPpSWw&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_Afx1BRjSKdkj4Q7gmcGko_TyR5AjHFXXj9DwaKGSCtuDBg&oe=69ABEB28&_nc_sid=7a9f4b',
   primaryColor: '#22c55e',
 };
 
