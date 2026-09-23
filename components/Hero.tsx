@@ -1,80 +1,45 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { ArrowRight, Zap, ShieldCheck, Truck } from 'lucide-react';
+import { ArrowDownRight, ArrowRight, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-zinc-950">
-      {/* Background Glow */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px]" />
+    <section className="relative isolate min-h-[760px] overflow-hidden border-b border-white/[0.06] bg-[#080a0a] pt-28 md:min-h-[840px] md:pt-32">
+      <div className="absolute -left-40 top-32 h-[32rem] w-[32rem] rounded-full bg-emerald-500/10 blur-[140px]" />
+      <div className="absolute -right-40 bottom-0 h-[28rem] w-[28rem] rounded-full bg-lime-300/[0.06] blur-[150px]" />
+      <div className="absolute inset-0 opacity-[0.04] [background-image:linear-gradient(rgba(255,255,255,.8)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.8)_1px,transparent_1px)] [background-size:56px_56px]" />
 
-      <div className="container mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-xs font-bold uppercase tracking-wider mb-6">
-            <Zap size={14} />
-            Novidades da Semana
+      <div className="container relative z-10 mx-auto grid items-center gap-12 px-5 md:px-8 lg:grid-cols-[1.02fr_.98fr] lg:gap-4">
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }}>
+          <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/[0.08] px-3 py-2 text-[10px] font-bold uppercase tracking-[0.25em] text-emerald-300">
+            <Sparkles size={13} /> Drop de primavera 2025
           </div>
-          <h1 className="text-5xl md:text-7xl font-display font-bold leading-[0.9] tracking-tighter mb-6">
-            EXPERIÊNCIA <br />
-            <span className="text-emerald-500">PREMIUM</span> EM <br />
-            VAPORIZAÇÃO
+          <h1 className="max-w-3xl font-display text-[3.6rem] font-bold leading-[.92] tracking-[-0.08em] text-white md:text-[6.5rem]">
+            Mais sabor.<br /><span className="text-emerald-400">Menos ruído.</span>
           </h1>
-          <p className="text-zinc-400 text-lg md:text-xl max-w-lg mb-10">
-            A MKPODS traz os melhores pods descartáveis, juices e acessórios das marcas mais renomadas do mundo. Qualidade garantida e entrega em todo o Brasil.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button className="px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold rounded-full transition-all flex items-center justify-center gap-2 group">
-              Ver Catálogo <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="px-8 py-4 bg-zinc-900 hover:bg-zinc-800 text-white font-bold rounded-full border border-zinc-800 transition-all">
-              Promoções
-            </button>
+          <p className="mt-8 max-w-lg text-base leading-7 text-zinc-400 md:text-lg">Pods, juices e acessórios escolhidos para transformar cada pausa em uma experiência premium — sem complicação.</p>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="#catalogo" className="group inline-flex items-center justify-center gap-3 rounded-full bg-emerald-400 px-6 py-4 text-sm font-bold text-[#07100b] transition hover:bg-emerald-300">Explorar catálogo <ArrowRight size={17} className="transition group-hover:translate-x-1" /></a>
+            <a href="#categorias" className="inline-flex items-center justify-center gap-3 rounded-full border border-white/10 bg-white/[0.04] px-6 py-4 text-sm font-bold text-white transition hover:border-emerald-400/40 hover:bg-white/[0.08]">Ver categorias <ArrowDownRight size={17} /></a>
           </div>
-
-          <div className="mt-12 flex items-center gap-8">
-            <div className="flex flex-col">
-              <span className="text-2xl font-bold text-white">10k+</span>
-              <span className="text-xs text-zinc-500 uppercase tracking-widest">Clientes</span>
-            </div>
-            <div className="w-px h-8 bg-zinc-800" />
-            <div className="flex flex-col">
-              <span className="text-2xl font-bold text-white">500+</span>
-              <span className="text-xs text-zinc-500 uppercase tracking-widest">Produtos</span>
-            </div>
-            <div className="w-px h-8 bg-zinc-800" />
-            <div className="flex flex-col">
-              <span className="text-2xl font-bold text-white">24h</span>
-              <span className="text-xs text-zinc-500 uppercase tracking-widest">Suporte</span>
-            </div>
+          <div className="mt-14 flex gap-8 border-t border-white/10 pt-6 md:gap-12">
+            <div><strong className="font-display text-3xl text-white">4.9</strong><span className="mt-1 block text-[10px] uppercase tracking-[0.2em] text-zinc-500">avaliação média</span></div>
+            <div><strong className="font-display text-3xl text-white">10k<span className="text-emerald-400">+</span></strong><span className="mt-1 block text-[10px] uppercase tracking-[0.2em] text-zinc-500">clientes felizes</span></div>
+            <div><strong className="font-display text-3xl text-white">24h</strong><span className="mt-1 block text-[10px] uppercase tracking-[0.2em] text-zinc-500">suporte real</span></div>
           </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotate: 10 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
-          className="relative aspect-square lg:aspect-auto lg:h-[600px] flex items-center justify-center"
-        >
-          <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 to-transparent rounded-full blur-3xl opacity-50" />
-          <div className="relative w-full h-full max-w-md mx-auto">
-            <Image
-              src="https://picsum.photos/seed/vape/800/800"
-              alt="Premium Pod"
-              fill
-              className="object-contain drop-shadow-[0_0_50px_rgba(16,185,129,0.3)]"
-              referrerPolicy="no-referrer"
-              priority
-            />
-          </div>
+        <motion.div initial={{ opacity: 0, scale: .92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .9, delay: .15 }} className="relative mx-auto flex h-[460px] w-full max-w-[560px] items-center justify-center md:h-[620px]">
+          <div className="absolute h-[390px] w-[390px] rounded-full border border-emerald-300/10 bg-emerald-300/[0.04] shadow-[0_0_160px_rgba(52,211,153,.12)] md:h-[520px] md:w-[520px]" />
+          <div className="absolute right-4 top-10 rounded-2xl border border-white/10 bg-[#111515]/80 px-4 py-3 backdrop-blur-md md:right-0 md:top-20"><p className="text-[10px] uppercase tracking-[.2em] text-zinc-500">Escolha da casa</p><p className="mt-1 text-sm font-bold text-white">V50 · Green Apple</p></div>
+          <div className="relative h-[430px] w-[430px] md:h-[560px] md:w-[560px]"><Image src="/hero-pod.jpg" alt="Pod premium MKPODS" fill className="object-contain drop-shadow-[0_30px_45px_rgba(0,0,0,.65)]" priority /></div>
+          <div className="absolute bottom-9 left-2 rounded-2xl border border-white/10 bg-[#111515]/80 px-4 py-3 backdrop-blur-md md:left-0"><p className="text-[10px] uppercase tracking-[.2em] text-emerald-300">Envio nacional</p><p className="mt-1 text-sm font-bold text-white">Despacho em até 24h</p></div>
         </motion.div>
       </div>
     </section>
   );
 }
+
+

@@ -2,91 +2,19 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { ShoppingCart } from 'lucide-react';
+import { ArrowUpRight, ShoppingBag } from 'lucide-react';
 import { Product } from '@/lib/store';
 
-interface ProductCardProps {
-  product: Product;
-  onBuy: (product: Product, flavor: string) => void;
-}
+interface ProductCardProps { product: Product; onBuy: (product: Product, flavor: string) => void; }
 
 export default function ProductCard({ product, onBuy }: ProductCardProps) {
-  const [selectedFlavor, setSelectedFlavor] = useState<string>(
-    product.flavors.find(f => f.available)?.name || ''
-  );
-
+  const [selectedFlavor, setSelectedFlavor] = useState(product.flavors.find((flavor) => flavor.available)?.name || '');
   return (
-    <div className="bg-[#0a0a0a] rounded-3xl overflow-hidden border border-zinc-900 flex flex-col h-full group">
-      <div className="relative aspect-square p-4">
-        <div className="relative w-full h-full rounded-2xl overflow-hidden">
-          <Image
-            src={product.image}
-            alt={product.model}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
-            referrerPolicy="no-referrer"
-          />
-          <div className="absolute top-2 right-2 z-10">
-            <span className="px-2 py-1 bg-[#22c55e]/20 text-[#22c55e] text-[10px] font-bold rounded-full border border-[#22c55e]/30">
-              {product.capacity}
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div className="px-6 pb-6 flex flex-col flex-grow">
-        <div className="mb-4">
-          <span className="text-[10px] text-zinc-600 font-bold uppercase tracking-widest block mb-1">
-            {product.brand}
-          </span>
-          <h3 className="text-3xl font-display font-bold text-white leading-none">
-            {product.model}
-          </h3>
-        </div>
-
-        <div className="mb-6">
-          <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest block mb-2">
-            SABORES:
-          </span>
-          <div className="flex flex-wrap gap-2">
-            {product.flavors.map((flavor, idx) => (
-              <button
-                key={idx}
-                disabled={!flavor.available}
-                onClick={() => setSelectedFlavor(flavor.name)}
-                className={`px-3 py-1 text-[11px] font-medium rounded-full border transition-all ${
-                  !flavor.available
-                    ? 'bg-zinc-900 text-zinc-500 border-zinc-800 cursor-not-allowed opacity-50'
-                    : selectedFlavor === flavor.name
-                    ? 'bg-[#22c55e] text-zinc-950 border-[#22c55e] shadow-[0_0_10px_rgba(34,197,94,0.3)]'
-                    : 'bg-zinc-900 text-zinc-300 border-zinc-800 hover:border-zinc-600'
-                }`}
-              >
-                {flavor.name}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-auto">
-          <div className="mb-4">
-            <div className="text-3xl font-display font-bold text-[#22c55e]">
-              R$ {product.price}
-            </div>
-            <div className="text-[11px] text-zinc-600 font-medium">
-              à vista no Pix
-            </div>
-          </div>
-
-          <button 
-            onClick={() => onBuy(product, selectedFlavor)}
-            className="w-full py-4 bg-[#22c55e] hover:bg-[#1eb054] text-zinc-950 font-bold rounded-2xl flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
-          >
-            <ShoppingCart size={20} fill="currentColor" />
-            Comprar
-          </button>
-        </div>
-      </div>
-    </div>
+    <article className="group flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-white/[0.08] bg-[#101414] transition duration-500 hover:-translate-y-1 hover:border-emerald-400/30 hover:shadow-[0_18px_45px_rgba(0,0,0,.25)]">
+      <div className="relative aspect-square overflow-hidden bg-[#151b19] p-4"><div className="relative h-full w-full overflow-hidden rounded-[1.15rem] bg-[#0c100f]"><Image src={product.image} alt={product.model} fill className="object-cover transition duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" /><span className="absolute left-3 top-3 rounded-full border border-emerald-300/20 bg-emerald-300/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-emerald-300">{product.capacity} tragos</span><span className="absolute bottom-3 left-3 rounded-full bg-black/50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white/70 backdrop-blur">{product.brand}</span></div></div>
+      <div className="flex flex-grow flex-col p-5"><div className="flex items-start justify-between gap-3"><div><h3 className="font-display text-2xl font-bold tracking-[-.05em] text-white">{product.model}</h3><p className="mt-1 text-xs text-zinc-500">Perfil intenso · edição original</p></div><ArrowUpRight size={18} className="text-zinc-600 transition group-hover:text-emerald-400" /></div><div className="mt-5"><p className="mb-2 text-[10px] font-bold uppercase tracking-[.2em] text-zinc-600">Escolha o sabor</p><div className="flex flex-wrap gap-1.5">{product.flavors.map((flavor) => <button key={flavor.name} disabled={!flavor.available} onClick={() => setSelectedFlavor(flavor.name)} className={`rounded-full border px-2.5 py-1.5 text-[10px] font-medium transition ${!flavor.available ? 'cursor-not-allowed border-white/5 bg-white/[0.02] text-zinc-700' : selectedFlavor === flavor.name ? 'border-emerald-400 bg-emerald-400 text-[#07100b]' : 'border-white/10 bg-white/[0.03] text-zinc-400 hover:border-emerald-400/40 hover:text-white'}`}>{flavor.name}</button>)}</div></div><div className="mt-auto pt-6"><div className="mb-4 flex items-end justify-between"><div><p className="text-[10px] uppercase tracking-[.18em] text-zinc-600">à vista no Pix</p><strong className="font-display text-2xl tracking-[-.04em] text-white">R$ {product.price}</strong></div><span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400">Em estoque</span></div><button onClick={() => onBuy(product, selectedFlavor)} className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-400 py-3.5 text-sm font-bold text-[#07100b] transition hover:bg-emerald-300 active:scale-[.98]"><ShoppingBag size={16} /> Adicionar ao carrinho</button></div></div>
+    </article>
   );
 }
+
+

@@ -3,46 +3,14 @@
 import { Truck, ShieldCheck, CreditCard, Headphones } from 'lucide-react';
 
 const benefits = [
-  {
-    icon: <Truck className="text-emerald-500" size={32} />,
-    title: 'Frete Rápido',
-    description: 'Enviamos para todo o Brasil com as melhores transportadoras.',
-  },
-  {
-    icon: <ShieldCheck className="text-emerald-500" size={32} />,
-    title: 'Produtos Originais',
-    description: 'Trabalhamos apenas com marcas autênticas e certificadas.',
-  },
-  {
-    icon: <CreditCard className="text-emerald-500" size={32} />,
-    title: 'Pagamento Seguro',
-    description: 'Parcele em até 12x ou pague via PIX com desconto.',
-  },
-  {
-    icon: <Headphones className="text-emerald-500" size={32} />,
-    title: 'Suporte 24h',
-    description: 'Nossa equipe está pronta para tirar todas as suas dúvidas.',
-  },
+  { icon: Truck, title: 'Despacho rápido', description: 'Seu pedido sai em até 24h úteis.' },
+  { icon: ShieldCheck, title: 'Procedência real', description: 'Marcas originais e seleção transparente.' },
+  { icon: CreditCard, title: 'Compra segura', description: 'Pix, cartão e parcelamento em até 12x.' },
+  { icon: Headphones, title: 'Suporte humano', description: 'Ajuda de verdade quando você precisar.' },
 ];
 
 export default function Benefits() {
-  return (
-    <section className="py-20 bg-zinc-950 border-y border-zinc-900">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-          {benefits.map((benefit) => (
-            <div key={benefit.title} className="flex flex-col items-center text-center">
-              <div className="mb-6 p-4 bg-zinc-900 rounded-2xl border border-zinc-800">
-                {benefit.icon}
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">{benefit.title}</h3>
-              <p className="text-zinc-500 text-sm leading-relaxed">
-                {benefit.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return <section id="beneficios" className="border-y border-white/[.06] bg-[#080a0a] py-14"><div className="container mx-auto grid grid-cols-1 gap-8 px-5 md:grid-cols-2 md:px-8 lg:grid-cols-4">{benefits.map(({ icon: Icon, title, description }) => <div key={title} className="flex gap-4"><div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-emerald-400/20 bg-emerald-400/[.08] text-emerald-400"><Icon size={20} /></div><div><h3 className="text-sm font-bold text-white">{title}</h3><p className="mt-1 text-xs leading-5 text-zinc-500">{description}</p></div></div>)}</div></section>;
 }
+
+
