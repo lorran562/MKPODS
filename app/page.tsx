@@ -41,8 +41,12 @@ export default function Home() {
               <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.28em] text-emerald-400">Curadoria MKPODS</p>
               <h2 className="max-w-xl font-display text-4xl font-bold tracking-[-0.06em] text-white md:text-6xl">Escolha seu próximo <span className="text-emerald-400">ritual.</span></h2>
             </div>
-            <p className="max-w-sm text-sm leading-6 text-zinc-500">Produtos selecionados para quem leva sabor, design e praticidade a sério.</p>
-          </div>
+              <p className="max-w-sm text-sm leading-6 text-zinc-500">Tabela atualizada de modelos e preços para pedidos no atacado.</p>
+            </div>
+            <div className="mb-8 grid gap-2 rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.06] p-4 sm:grid-cols-2 sm:items-center sm:p-5">
+              <div><p className="text-xs font-black uppercase tracking-[.18em] text-emerald-300">Atacado acima de 10 peças</p><p className="mt-1 text-xs text-zinc-400">Valores por unidade · pronta entrega</p></div>
+              <p className="text-xs font-bold text-red-300 sm:text-right">🚨 Itens com alerta estão na promoção</p>
+            </div>
           {filteredProducts.length > 0 ? <ProductGrid products={filteredProducts} /> : (
             <div className="rounded-3xl border border-white/10 bg-white/[0.03] py-24 text-center">
               <p className="text-lg text-zinc-400">Nenhum pod encontrado para “{searchTerm}”.</p>
@@ -55,4 +59,3 @@ export default function Home() {
     </main>
   );
 }
-
