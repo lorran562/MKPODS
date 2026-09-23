@@ -50,7 +50,7 @@ const DEFAULT_PRODUCTS: Product[] = [
   item(38, 'OUTROS', 'XROS PRO', 'KIT', '205', '/product-v80.jpg', false, 'Aparelho'),
 ];
 
-const DEFAULT_SETTINGS: SiteSettings = { name: 'MKPODS', logo: '/mkpods-logo.svg', primaryColor: '#6ee7b7' };
+const DEFAULT_SETTINGS: SiteSettings = { name: '77SMOKE', logo: '/mkpods-logo.svg', primaryColor: '#6ee7b7' };
 
 export function useStore() {
   const [products, setProducts] = useState<Product[]>([]);

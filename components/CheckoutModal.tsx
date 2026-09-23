@@ -27,7 +27,7 @@ export default function CheckoutModal({ isOpen, onClose, product, selectedFlavor
       return;
     }
 
-    const message = `*NOVO PEDIDO - MKPODS*%0A%0A` +
+    const message = `*NOVO PEDIDO - 77SMOKE*%0A%0A` +
       `*Produto:* ${product.brand} ${product.model} (${product.capacity})%0A` +
       `*Sabor:* ${selectedFlavor}%0A` +
       `*Valor:* R$ ${product.price}%0A%0A` +

@@ -13,8 +13,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'MKPODS | Os Melhores Pods e Vaporizadores',
-  description: 'MKPODS - A sua loja premium de pods descartáveis, juices e acessórios para vaporizadores.',
+  title: '77SMOKE | Os Melhores Pods e Vaporizadores',
+  description: '77SMOKE - A sua loja premium de pods descartáveis, juices e acessórios para vaporizadores.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

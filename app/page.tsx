@@ -38,7 +38,7 @@ export default function Home() {
         <div className="container mx-auto px-5 md:px-8">
           <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.28em] text-emerald-400">Curadoria MKPODS</p>
+              <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.28em] text-emerald-400">Curadoria 77SMOKE</p>
               <h2 className="max-w-xl font-display text-4xl font-bold tracking-[-0.06em] text-white md:text-6xl">Escolha seu próximo <span className="text-emerald-400">ritual.</span></h2>
             </div>
               <p className="max-w-sm text-sm leading-6 text-zinc-500">Tabela atualizada de modelos e preços para pedidos no atacado.</p>
