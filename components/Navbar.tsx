@@ -1,16 +1,41 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { ShoppingBag, Menu, X, Search } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useEffect, useState } from 'react';
+import { Search } from 'lucide-react';
 import Image from 'next/image';
 
 interface NavbarProps { onSearch?: (term: string) => void; }
 
 export default function Navbar({ onSearch }: NavbarProps) {
-  const [isScrolled, setIsScrolled] = useState(false); const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); const [searchTerm, setSearchTerm] = useState('');
-  useEffect(() => { const handleScroll = () => setIsScrolled(window.scrollY > 24); window.addEventListener('scroll', handleScroll); return () => window.removeEventListener('scroll', handleScroll); }, []);
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => { const value = event.target.value; setSearchTerm(value); onSearch?.(value); };
-  return <nav className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${isScrolled ? 'border-b border-white/[0.08] bg-[#080a0a]/90 py-2.5 backdrop-blur-xl' : 'bg-transparent py-3.5 sm:py-5'}`}><div className="container mx-auto flex items-center justify-between gap-2 px-4 sm:gap-4 sm:px-6 md:px-8"><a href="#top" className="flex shrink-0 items-center gap-2 sm:gap-3"><Image src="/mkpods-logo.svg" alt="77SMOKE" width={34} height={34} className="rounded-[10px] shadow-[0_0_25px_rgba(52,211,153,.25)] sm:h-10 sm:w-10" /><span className="hidden font-display text-xl font-bold tracking-[-.06em] text-white sm:block">77<span className="text-emerald-400">SMOKE</span><sup className="ml-1 text-[8px] tracking-normal text-zinc-500">™</sup></span></a><div className="hidden items-center gap-8 text-[11px] font-bold uppercase tracking-[.18em] text-zinc-400 lg:flex"><a href="#catalogo" className="transition hover:text-emerald-400">Catálogo</a><a href="#categorias" className="transition hover:text-emerald-400">Categorias</a><a href="#beneficios" className="transition hover:text-emerald-400">Por que 77SMOKE?</a></div><div className="flex flex-1 justify-end gap-1.5 sm:gap-3"><div className="relative w-full max-w-[190px] sm:max-w-[240px]"><Search className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" size={15} /><input value={searchTerm} onChange={handleSearchChange} placeholder="Buscar" className="w-full rounded-full border border-white/10 bg-white/[0.06] py-2.5 pl-9 pr-3 text-xs text-white outline-none transition placeholder:text-zinc-600 focus:border-emerald-400/50 sm:pl-10 sm:pr-4" /></div><button aria-label="Carrinho" className="relative shrink-0 rounded-full border border-white/10 p-2.5 text-zinc-300 transition hover:border-emerald-400/50 hover:text-emerald-300"><ShoppingBag size={17} /><span className="absolute -right-1 -top-1 grid h-4 w-4 place-items-center rounded-full bg-emerald-400 text-[9px] font-bold text-[#07100b]">0</span></button><button aria-label="Abrir menu" className="shrink-0 rounded-full border border-white/10 p-2.5 text-zinc-300 md:hidden" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>{isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}</button></div></div><AnimatePresence>{isMobileMenuOpen && <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="mt-3 overflow-hidden border-t border-white/[0.08] bg-[#080a0a] md:hidden"><div className="container mx-auto flex flex-col gap-5 px-4 py-6 text-xs font-bold uppercase tracking-[.18em] text-zinc-400"><a href="#catalogo" onClick={() => setIsMobileMenuOpen(false)}>Catálogo</a><a href="#categorias" onClick={() => setIsMobileMenuOpen(false)}>Categorias</a><a href="#beneficios" onClick={() => setIsMobileMenuOpen(false)}>Por que 77SMOKE?</a></div></motion.div>}</AnimatePresence></nav>;
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 16);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setSearchTerm(value);
+    onSearch?.(value);
+  };
+
+  return (
+    <nav className={`fixed inset-x-0 top-0 z-50 border-b transition-all ${isScrolled ? 'border-white/[.1] bg-[#080a0a]/95 backdrop-blur-xl' : 'border-white/[.06] bg-[#080a0a]/90'}`}>
+      <div className="container mx-auto flex h-[68px] items-center gap-3 px-4 sm:h-[76px] sm:px-6 md:px-8">
+        <a href="#top" className="flex shrink-0 items-center gap-2" aria-label="77SMOKE - início">
+          <Image src="/mkpods-logo.svg" alt="77SMOKE" width={34} height={34} className="rounded-[10px]" />
+          <span className="hidden font-display text-xl font-bold tracking-[-.06em] text-white sm:block">77<span className="text-emerald-400">SMOKE</span></span>
+        </a>
+        <a href="#catalogo" className="hidden text-xs font-bold uppercase tracking-[.16em] text-zinc-400 transition hover:text-emerald-400 md:block">Catálogo</a>
+        <div className="relative ml-auto w-full max-w-[290px] sm:max-w-[360px]">
+          <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" size={16} />
+          <input value={searchTerm} onChange={handleSearchChange} placeholder="Buscar modelo ou sabor" aria-label="Buscar modelo ou sabor" className="h-10 w-full rounded-full border border-white/10 bg-white/[.06] pl-10 pr-4 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-emerald-400/50" />
+        </div>
+      </div>
+    </nav>
+  );
 }
 
